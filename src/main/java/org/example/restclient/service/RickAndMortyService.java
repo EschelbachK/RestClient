@@ -19,6 +19,7 @@ public class RickAndMortyService {
 
     public RickAndMortyService(RestClient.Builder restClient) {
         this.restClient = restClient
+                // Zugang zur Api verschaffen
                 .baseUrl("https://rickandmortyapi.com/api")
                 .build();
     }
@@ -26,7 +27,9 @@ public class RickAndMortyService {
     public List<RickAndMortyChar> getAllChars() {
         return restClient.get()
                 .uri("/character")
+                // abrufen
                 .retrieve()
+                // in eine Klasse umbauen lassen mit Objektvorlage
                 .body(RickAndMortyResponse.class)
                 .results();
 
