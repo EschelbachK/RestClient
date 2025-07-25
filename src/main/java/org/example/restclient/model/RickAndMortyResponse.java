@@ -1,4 +1,7 @@
+
 package org.example.restclient.model;
 
-public record RickAndMortyResponse() {
+import java.util.List;
+
+public record RickAndMortyResponse(RickAndMortyInfo info, List<RickAndMortyChar> results) {
 }
