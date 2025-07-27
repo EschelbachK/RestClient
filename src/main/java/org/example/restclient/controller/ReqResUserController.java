@@ -1,0 +1,33 @@
+package org.example.restclient.controller;
+
+import org.example.restclient.model.ReqResCreateUserRequest;
+import org.example.restclient.model.ReqResCreateUserResponse;
+import org.example.restclient.model.ReqResUser;
+import org.example.restclient.service.ReqResUserService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController // Kennzeichnet die Klasse als REST-Controller, der HTTP-Anfragen beantwortet
+@RequestMapping("/api/users") // Basis-URL für alle Endpunkte in dieser Klasse (z.B. /api/users)
+public class ReqResUserController {
+
+    private final ReqResUserService service; // Service, der die Logik für User-Operationen kapselt
+
+    // Konstruktor-Injektion: "Spring" fügt automatisch die Service-Instanz ein
+    public ReqResUserController(ReqResUserService service) {
+        this.service = service;
+    }
+
+    @GetMapping // Reagiert auf GET-Anfragen an /api/users
+    public List<ReqResUser> getAllUsers() {
+        // Ruft alle Benutzer von der externen API ab und gibt sie zurück
+        return service.getAllUsers();
+    }
+
+    @PostMapping // Reagiert auf POST-Anfragen an /api/users
+    public ReqResCreateUserResponse createUser(@RequestBody ReqResCreateUserRequest request) {
+        // Nimmt JSON aus dem Request-Body, erstellt einen neuen User und gibt die Antwort zurück
+        return service.createUser(request);
+    }
+}
