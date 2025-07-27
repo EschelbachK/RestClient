@@ -1,8 +1,6 @@
 package org.example.restclient.controller;
 
-import org.example.restclient.model.ReqResCreateUserRequest;
-import org.example.restclient.model.ReqResCreateUserResponse;
-import org.example.restclient.model.ReqResUser;
+import org.example.restclient.model.*;
 import org.example.restclient.service.ReqResUserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +27,17 @@ public class ReqResUserController {
     public ReqResCreateUserResponse createUser(@RequestBody ReqResCreateUserRequest request) {
         // Nimmt JSON aus dem Request-Body, erstellt einen neuen User und gibt die Antwort zurück
         return service.createUser(request);
+    }
+
+    // Benutzer löschen per ID
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable int id) {
+        service.deleteUser(id);
+    }
+
+    // Benutzer aktualisieren per ID und Request-Body
+    @PutMapping("/{id}")
+    public ReqResUpdateUserResponse updateUser(@PathVariable int id, @RequestBody ReqResUpdateUserRequest request) {
+        return service.updateUser(id, request);
     }
 }

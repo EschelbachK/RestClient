@@ -1,9 +1,6 @@
 package org.example.restclient.service;
 
-import org.example.restclient.model.ReqResCreateUserRequest;
-import org.example.restclient.model.ReqResCreateUserResponse;
-import org.example.restclient.model.ReqResResponse;
-import org.example.restclient.model.ReqResUser;
+import org.example.restclient.model.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -52,5 +49,22 @@ public class ReqResUserService {
                 .retrieve()
                 // Antwort als ReqResCreateUserResponse-Objekt parsen und zurückgeben
                 .body(ReqResCreateUserResponse.class);
+    }
+
+    // Benutzer aktualisieren
+    public ReqResUpdateUserResponse updateUser(int id, ReqResUpdateUserRequest request) {
+        return restClient.put()
+                .uri("/users/" + id)
+                .body(request)
+                .retrieve()
+                .body(ReqResUpdateUserResponse.class);
+    }
+
+    // Benutzer löschen
+    public void deleteUser(int id) {
+        restClient.delete()
+                .uri("/users/" + id)
+                .retrieve()
+                .toBodilessEntity();
     }
 }
