@@ -3,7 +3,7 @@ package org.example.restclient.controller;
 
 
 import org.example.restclient.model.RickAndMortyChar;
-import org.example.restclient.service.RickAndMortyService;
+import org.example.restclient.service.RickAndMortyClientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.List;
 @RequestMapping("/api/rick")
 public class RickAndMortyController {
 
-    private final RickAndMortyService service;
+    private final RickAndMortyClientService service;
 
-    public RickAndMortyController(RickAndMortyService service) {
+    public RickAndMortyController(RickAndMortyClientService service) {
         this.service = service;
     }
 

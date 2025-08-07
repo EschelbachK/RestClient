@@ -9,12 +9,12 @@ import java.util.List;
 
 
 @Service
-public class RickAndMortyService {
+public class RickAndMortyClientService {
 
     // Client bauen
     private final RestClient restClient;
 
-    public RickAndMortyService(RestClient.Builder restClient) {
+    public RickAndMortyClientService(RestClient.Builder restClient) {
         this.restClient = restClient
                 // Zugang zur Api verschaffen
                 .baseUrl("https://rickandmortyapi.com/api")
@@ -29,6 +29,7 @@ public class RickAndMortyService {
                 // in eine Klasse umbauen lassen mit Objektvorlage
                 .body(RickAndMortyResponse.class)
                 .results();
+
 
     }
 

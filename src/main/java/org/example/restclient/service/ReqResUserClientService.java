@@ -7,13 +7,13 @@ import org.springframework.web.client.RestClient;
 import java.util.List;
 
 @Service  // Kennzeichnet die Klasse als Service-Komponente (Geschäftslogik)
-public class ReqResUserService {
+public class ReqResUserClientService {
 
     // HTTP-Client für API-Aufrufe
     private final RestClient restClient;
 
     // Konstruktor: baut den RestClient mit Basis-URL und API-Key auf
-    public ReqResUserService(RestClient.Builder builder) {
+    public ReqResUserClientService(RestClient.Builder builder) {
         // Basisadresse der API setzen
         this.restClient = builder
                 .baseUrl("https://reqres.in/api")

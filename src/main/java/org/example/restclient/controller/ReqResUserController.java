@@ -1,7 +1,7 @@
 package org.example.restclient.controller;
 
 import org.example.restclient.model.*;
-import org.example.restclient.service.ReqResUserService;
+import org.example.restclient.service.ReqResUserClientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,10 +10,10 @@ import java.util.List;
 @RequestMapping("/api/users") // Basis-URL für alle Endpunkte in dieser Klasse (z.B. /api/users)
 public class ReqResUserController {
 
-    private final ReqResUserService service; // Service, der die Logik für User-Operationen kapselt
+    private final ReqResUserClientService service; // Service, der die Logik für User-Operationen kapselt
 
     // Konstruktor-Injektion: "Spring" fügt automatisch die Service-Instanz ein
-    public ReqResUserController(ReqResUserService service) {
+    public ReqResUserController(ReqResUserClientService service) {
         this.service = service;
     }
 
