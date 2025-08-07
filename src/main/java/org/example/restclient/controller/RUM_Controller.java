@@ -8,14 +8,16 @@ import java.util.List;
 
 // REST-Controller für API-Endpunkte
 @RestController
-@RequestMapping("/api") // Basis-URL für alle Endpunkte
+// Basis-URL für alle Endpunkte
+@RequestMapping("/api")
 public class RUM_Controller {
 
-    private final RUM_ClientService service; // Service für API-Abfragen
+    // Service für API-Abfragen
+    private final RUM_ClientService service;
 
     // Konstruktor: Initialisiert den Service
     public RUM_Controller(RUM_ClientService service) {
-        this.service = service; // Setzt den Service
+        this.service = service;
     }
 
     // Endpunkt: Alle Charaktere, optional nach Status gefiltert

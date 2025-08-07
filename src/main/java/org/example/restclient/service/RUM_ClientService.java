@@ -9,23 +9,17 @@ import org.springframework.web.client.RestClient;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// Markiert die Klasse als Service-Komponente in Spring
 @Service
 public class RUM_ClientService {
 
-    // Deklariert den RestClient für API-Anfragen
     private final RestClient restClient;
 
-    // Konstruktor, der den RestClient mit der Basis-URL initialisiert
     public RUM_ClientService(RestClient.Builder restClientBuilder) {
-        // Setzt die Basis-URL der API für den RestClient
         this.restClient = restClientBuilder
                 .baseUrl("https://rickandmortyapi.com/api")
-                // Baut den RestClient
                 .build();
     }
 
-    // Methode, um alle Charaktere mit reduzierten Informationen zurückzugeben
     public List<RUM_CharacterDTO> getAllReducedChars() {
         // Sendet eine GET-Anfrage an /character, um alle Charaktere zu erhalten
         return restClient.get()
