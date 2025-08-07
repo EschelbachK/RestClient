@@ -33,7 +33,7 @@ public class RUM_Controller {
 
     // Endpunkt: Einzelner Charakter nach ID
     @GetMapping("/characters/{id}")
-    public RUM_CharacterDTO getCharacterById(@PathVariable int id) {
+    public RUM_CharacterDTO getReducedCharacterById(@PathVariable int id) {
         // Gibt den Charakter mit der angegebenen ID zurück
         return service.getReducedCharById(id);
     }
