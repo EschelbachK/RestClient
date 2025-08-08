@@ -1,6 +1,6 @@
 package org.example.restclient.model;
 
-public record ReqResUser(
+public record RR_User(
         int id,
         String email,
         String first_name,

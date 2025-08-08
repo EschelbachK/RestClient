@@ -6,14 +6,13 @@ import org.springframework.web.client.RestClient;
 
 import java.util.List;
 
-@Service  // Kennzeichnet die Klasse als Service-Komponente (Geschäftslogik)
-public class ReqResUserClientService {
+@Service
+public class RR_UserClient_Service {
 
-    // HTTP-Client für API-Aufrufe
     private final RestClient restClient;
 
     // Konstruktor: baut den RestClient mit Basis-URL und API-Key auf
-    public ReqResUserClientService(RestClient.Builder builder) {
+    public RR_UserClient_Service(RestClient.Builder builder) {
         // Basisadresse der API setzen
         this.restClient = builder
                 .baseUrl("https://reqres.in/api")
@@ -23,15 +22,14 @@ public class ReqResUserClientService {
                 .build();
     }
 
-    // Methode um alle Benutzer von der API abzurufen
-    public List<ReqResUser> getAllUsers() {
+    public List<RR_User> getAllUsers() {
         // GET-Anfrage an /users?page=2 starten
-        ReqResResponse response = restClient.get()
+        RR_Response response = restClient.get()
                 .uri("/users?page=2")
                 // Anfrage ausführen und Antwort holen
                 .retrieve()
                 // Antwort als ReqResResponse-Objekt parsen
-                .body(ReqResResponse.class);
+                .body(RR_Response.class);
 
         // Antwort in Konsole ausgeben
         System.out.println("Antwort erhalten: " + response);
@@ -41,23 +39,23 @@ public class ReqResUserClientService {
     }
 
     // Methode um neuen Benutzer über "POST" anzulegen
-    public ReqResCreateUserResponse createUser(ReqResCreateUserRequest request) {
+    public RR_Create_User_Response createUser(RR_Create_User_Request request) {
         // POST-Anfrage an /users mit Request-Body starten
         return restClient.post()
                 .uri("/users")
                 .body(request)
                 .retrieve()
                 // Antwort als ReqResCreateUserResponse-Objekt parsen und zurückgeben
-                .body(ReqResCreateUserResponse.class);
+                .body(RR_Create_User_Response.class);
     }
 
     // Benutzer aktualisieren
-    public ReqResUpdateUserResponse updateUser(int id, ReqResUpdateUserRequest request) {
+    public RR_Update_User_Response updateUser(int id, RR_Update_User_Request request) {
         return restClient.put()
                 .uri("/users/" + id)
                 .body(request)
                 .retrieve()
-                .body(ReqResUpdateUserResponse.class);
+                .body(RR_Update_User_Response.class);
     }
 
     // Benutzer löschen
