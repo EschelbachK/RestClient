@@ -1,7 +1,7 @@
 package org.example.restclient.controller;
 
 import org.example.restclient.model.*;
-import org.example.restclient.service.RR_UserClient_Service;
+import org.example.restclient.service.UserClientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,22 +9,22 @@ import java.util.List;
 @RestController
 // Basis-URL für alle Endpunkte in dieser Klasse
 @RequestMapping("/api/users")
-public class RR_User_Controller {
+public class UserController {
 
-    private final RR_UserClient_Service service;
+    private final UserClientService service;
 
     // Konstruktor-Injektion: "Spring" fügt automatisch die Service-Instanz ein
-    public RR_User_Controller(RR_UserClient_Service service) {
+    public UserController(UserClientService service) {
         this.service = service;
     }
 
     @GetMapping
-    public List<RR_User> getAllUsers() {
+    public List<User> getAllUsers() {
         return service.getAllUsers();
     }
 
     @PostMapping
-    public RR_Create_User_Response createUser(@RequestBody RR_Create_User_Request request) {
+    public CreateUserResponse createUser(@RequestBody CreateUserRequest request) {
         // Nimmt JSON aus dem Request-Body, erstellt einen neuen User und gibt die Antwort zurück
         return service.createUser(request);
     }
@@ -37,7 +37,7 @@ public class RR_User_Controller {
 
     // Benutzer aktualisieren per ID und Request-Body
     @PutMapping("/{id}")
-    public RR_Update_User_Response updateUser(@PathVariable int id, @RequestBody RR_Update_User_Request request) {
+    public Update_User_Response updateUser(@PathVariable int id, @RequestBody UpdateUserRequest request) {
         return service.updateUser(id, request);
     }
 }
